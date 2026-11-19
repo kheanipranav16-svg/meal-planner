@@ -1,0 +1,142 @@
+:root {
+  color-scheme: light;
+  --bg: #f5f6f0;
+  --surface: #ffffff;
+  --ink: #1f2a24;
+  --muted: #5b685f;
+  --line: #dfe4d8;
+  --green: #2f7d4f;
+  --deal: #b8470c;
+  --deal-bg: #fff1e6;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+
+.site-header { background: var(--green); color: #fff; padding: 24px 0; }
+.site-header h1 { margin: 0 0 4px; font-size: 1.8rem; }
+.site-header p { margin: 0; opacity: 0.92; }
+
+main { padding-top: 20px; padding-bottom: 40px; }
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.panel h2 { margin: 0 0 12px; font-size: 1.25rem; }
+.panel h3 { margin: 20px 0 8px; }
+
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; align-items: end; }
+label { display: grid; gap: 4px; font-size: 0.9rem; color: var(--muted); }
+select, input {
+  width: 100%;
+  min-width: 0;
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  background: #fff;
+}
+button {
+  font: inherit;
+  font-weight: 600;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--green);
+  color: #fff;
+  cursor: pointer;
+}
+button:hover:not(:disabled) { background: #256640; }
+button:disabled { opacity: 0.6; cursor: wait; }
+:focus-visible { outline: 3px solid #86c39c; outline-offset: 2px; }
+
+.error { color: #b00020; margin: 12px 0 0; }
+
+.summary { font-size: 1.1rem; font-weight: 600; color: var(--green); }
+
+.meal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+.card { border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; }
+.card header { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px; }
+.card h3 { margin: 0; font-size: 1.05rem; flex: 1 1 100%; order: 2; }
+.card.empty { color: var(--muted); background: #fafaf7; }
+.day { font-weight: 700; color: var(--green); }
+
+.ingredients, .deals { list-style: none; margin: 0; padding: 0; }
+.ingredients li, .deals li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+}
+.ingredients li:last-child, .deals li:last-child { border-bottom: 0; }
+small { color: var(--muted); }
+.price s { color: var(--muted); }
+
+.badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  background: #e8f1ea;
+  color: var(--green);
+}
+.badge.deal { background: var(--deal-bg); color: var(--deal); font-weight: 600; }
+
+.cost { margin: 10px 0 4px; font-weight: 600; }
+.save { color: var(--deal); }
+details summary { cursor: pointer; color: var(--green); }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); }
+th { color: var(--muted); font-weight: 600; font-size: 0.85rem; }
+
+/* Chat */
+.chat-log {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 340px;
+  min-height: 120px;
+  overflow-y: auto;
+  padding: 4px 2px 8px;
+}
+.msg {
+  max-width: 88%;
+  padding: 9px 13px;
+  border-radius: 14px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.msg.bot { align-self: flex-start; background: #eef3ea; border-bottom-left-radius: 4px; }
+.msg.user { align-self: flex-end; background: var(--green); color: #fff; border-bottom-right-radius: 4px; }
+.msg.pending { color: var(--muted); font-style: italic; }
+.msg.error { background: #fdecea; color: #8a1c10; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 12px; }
+.chip {
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--green);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.chip:hover:not(:disabled) { background: #e8f1ea; }
+.chat-form { display: flex; gap: 8px; }
+.chat-form input { flex: 1; min-width: 0; }
+.badge.kcal { background: #eef0fb; color: #3b4ab8; }
